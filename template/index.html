@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- LOGIN SECTION -->
+  <section class="login-container">
+    <div class="custom-login">
+      <div class="login-title-box">
+        <h1 class="login-title-font">Enter your name</h1>
+      </div>
+      <form @submit.prevent="login" class="custom-form">
+        <div class="form-group-custom">
+          <input type="email" class="custom-input" placeholder="Your name" v-model="email" />
+        </div>
+        <button type="submit" class="button-login login-text">Play</button>
+      </form>
+    </div>
+  </section>
+
+
+  <!-- HOME SECTION -->
+  <div class="wrapper">
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <label class="question">Siapakah penemu kereta api?</label>
+    </nav>
+
+    <!-- IMAGE SECTION -->
+    <div class="content">
+
+      <div class="box-question">
+        <img src="https://ferdfound.files.wordpress.com/2014/12/george-stephenson-_663_382.png" alt="">
+      </div>
+
+    </div>
+
+    <!-- ANSWER SECTION -->
+    <div class="selection">
+      <div class="ans-box">
+        <div class="answer-1"><label class="question-name">George Stephenson</label></div>
+        <div class="answer-2"><label class="question-name">George Washington</label></div>
+      </div>
+      <div class="ans-box">
+        <div class="answer-3"><label class="question-name">James Watt</label></div>
+        <div class="answer-4"><label class="question-name">James Clear</label></div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+
+
+</html>

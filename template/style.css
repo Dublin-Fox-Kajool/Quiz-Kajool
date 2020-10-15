@@ -1,0 +1,184 @@
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #F2F2F2;
+}
+
+.wrapper {
+  height: 100vh;
+}
+
+.navbar {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  height: 6rem;
+  box-shadow: 2px 1px 4px 1px #e1e1e1;
+}
+
+.question {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 500;
+  margin: 0 auto;
+}
+
+.content {
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  height: 45vh;
+}
+
+img {
+  border-radius: 0.5rem;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.box-question {
+  margin: 0 auto;
+  background-color: yellow;
+  height: 40vh;
+  width: 500px;
+}
+
+.selection {
+  display: flex;
+  height: 22vh;
+  justify-content: space-around;
+}
+
+.answer-1 {
+  color: #fff;
+  background-color:#DF1C35;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  height: 12vh;
+  width: 30vw;
+  border-radius: 0.6rem;
+  margin-bottom: 0.6rem;
+  text-align: center;
+}
+.answer-2 {
+  color: #fff;
+  background-color: #215AA7;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  height: 12vh;
+  width: 30vw;
+  border-radius: 0.6rem;
+  margin-bottom: 0.6rem;
+  text-align: center;
+}
+.answer-3 {
+  color: #fff;
+  background-color: #D69C23;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  height: 12vh;
+  width: 30vw;
+  border-radius: 0.6rem;
+  margin-bottom: 0.6rem;
+  text-align: center;
+}
+.answer-4 {
+  color: #fff;
+  background-color: #62982A;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  height: 12vh;
+  width: 30vw;
+  border-radius: 0.6rem;
+  margin-bottom: 0.6rem;
+  text-align: center;
+}
+
+.question-name {
+  display: flex;
+  align-self: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+
+}
+
+/* LOGIN */
+.login-container {
+  display: flex;
+  justify-content: center;
+  width: 500px;
+  height: 100vh;
+  margin: 0 auto;
+  
+}
+
+.login-title-box {
+  margin-bottom: 1rem;
+}
+
+.login-title-font {
+  font-size: 2rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+
+.custom-login {
+  box-shadow: 2px 2px 10px 10px #cfcdcd9b;
+}
+.form-group-custom {
+  margin-bottom: 0.625rem;
+}
+.custom-login {
+  border-radius: 0.7rem;
+  padding: 3rem 3rem;
+  margin: auto;
+}
+.custom-input {
+  font-family: 'Poppins', sans-serif;
+  border: 1px solid #6c6c72;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+.login-input-text {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  color: #6c6c72;
+  float: left;
+  margin-bottom: 0.5rem;
+}
+
+.login-text {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.button-login {
+  background-color: #2ec9e9;
+  color: white;
+  margin: 0.625rem auto;
+  padding: 0.8rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  border-color: inherit;
+}
+
+.button-login:focus {
+  outline: none;
+}
+
+
