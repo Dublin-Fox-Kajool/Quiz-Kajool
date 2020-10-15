@@ -1,0 +1,20 @@
+[
+  {
+    "question": "Apa kepanjangan dari ES6 ?",
+    "correct_answer": "ECMAScript version 6",
+    "incorrect_answers": [
+      "Embedded Script version 6",
+      "EngineScript 6",
+      "Eugin Six"
+    ]
+  },
+  {
+    "question": "Nama pulau di Indonesia yang sama dengan bahasa pemrograman ?",
+    "correct_answer": "Java",
+    "incorrect_answers": [
+      "Sumatera",
+      "Jakarta",
+      "Sulawesi"
+    ]
+  }
+]
