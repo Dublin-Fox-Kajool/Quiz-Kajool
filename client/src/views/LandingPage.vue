@@ -33,7 +33,7 @@ export default {
   width: 500px;
   height: 100vh;
   margin: 0 auto;
-  
+
 }
 
 .login-title-box {

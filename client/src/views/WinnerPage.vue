@@ -27,6 +27,7 @@ export default {
   height: 100vh;
   padding-top: 6rem;
   background: url('../assets/background.svg');
+  background-size: cover;
 }
 
 .winner-person {
