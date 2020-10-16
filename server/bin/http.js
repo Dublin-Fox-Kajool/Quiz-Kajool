@@ -18,7 +18,7 @@ io.on('connection', (socket) => {
 
       io.emit('user-connected', users)
     })
-
+    
     socket.on('question-request', async (counter) => {
       index += counter
       const questions = await Questions()

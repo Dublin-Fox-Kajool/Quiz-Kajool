@@ -25,7 +25,19 @@ export default {
   name: 'LandingPage',
   data () {
     return {
-      name: ''
+      name: '',
+      users: []
+    }
+  },
+  sockets: {
+    'user-connected' (users) {
+      console.log(users, '<<<<< users dari server')
+      this.users = users
+      if (this.users.length < 2 && localStorage.name) {
+        // this.$router.push({name: 'Waiting'})
+      } else {
+        this.$router.push({name: 'GamePlay'})
+      }
     }
   },
   methods: {
@@ -34,9 +46,7 @@ export default {
         name: this.name
       }
       this.$socket.emit('user-connect', payload)
-      this.$socket.emit('question-request', 0)
       localStorage.setItem('name', this.name)
-      this.$router.push({ name: 'Home' })
     }
   }
 }
