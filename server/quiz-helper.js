@@ -10,13 +10,14 @@ let availableQuestions = []
 let questions = []
 
 class QuizHelper {
-  static getRandomAnswerOnQuestion () {
+  static getRandomAnswerOnQuestions () {
     return new Promise ((res, rej) => {
       setTimeout (() => {
         try {
           questions = data.map((loadedQuestion) => {
             const formattedQuestion = {
-              question: loadedQuestion.question
+              question: loadedQuestion.question,
+              image_url: loadedQuestion.image_url
             }
             const answerChoices = [...loadedQuestion.incorrect_answers]
             formattedQuestion.answer = Math.floor(Math.random() * 4) + 1
@@ -24,8 +25,9 @@ class QuizHelper {
             answerChoices.forEach((choice, index) => {
               formattedQuestion['choice' + (index + 1)] = choice
             })
-            res(formattedQuestion)
+            return formattedQuestion
           })
+          res(questions)
         } catch (err) {
           rej(err)
         }      
