@@ -4,9 +4,9 @@ export default {
     question: ''
   },
   mutations: {
-    'SOCKET_CONNECT'(state, payload) {
+    'SOCKET_CONNECT' (state, payload) {
       console.log(payload)
       state.question = payload
     }
-  },
+  }
 }
