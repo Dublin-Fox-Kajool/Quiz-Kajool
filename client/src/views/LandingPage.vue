@@ -29,15 +29,15 @@ export default {
   },
   methods: {
     play () {
-      let payload = {
+      const payload = {
         name: this.name
       }
       this.$socket.emit('user-connect', payload)
       this.$socket.emit('question-request', 0)
       localStorage.setItem('name', this.name)
-      this.$router.push({name: 'Home'})
+      this.$router.push({ name: 'Home' })
     }
-  },
+  }
 }
 </script>
 

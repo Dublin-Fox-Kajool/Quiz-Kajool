@@ -2,7 +2,7 @@
   <section class="wrapper">
     <!-- NAVBAR -->
     <nav class="navbar">
-      <label class="question">Siapakah penemu kereta api?</label>
+      <label class="question">Siapakah penemu kereta api? Lorem ipsum dolor sit amet consectetur adipisicing elit.</label>
     </nav>
 
     <!-- IMAGE SECTION -->
@@ -11,13 +11,13 @@
         <img class="img-question" src="https://ferdfound.files.wordpress.com/2014/12/george-stephenson-_663_382.png" alt="">
       </div>
 
-      <div class="skip">
+      <!-- <div class="skip">
         <h3 class="skip-text">SKIP</h3>
-      </div>
+      </div> -->
 
       <div class="total">
-        <h1 class="total-title">0</h1>
-        <h3 class="total-text">Answers</h3>
+        <h1 class="total-title">5</h1>
+        <h3 class="total-text">Answers Left</h3>
       </div>
     </div>
 
@@ -39,7 +39,7 @@
 
 export default {
   name: 'Home',
-  data() {
+  data () {
     return {
       users: [],
       question: null,
@@ -65,20 +65,20 @@ export default {
       // }
     }
   },
-  created() {
+  created () {
     // this.intervalQuestion()
     this.pollData()
   },
   methods: {
-    pollData() {
-      let interval = setInterval(() => {
+    pollData () {
+      const interval = setInterval(() => {
         // console.log('pertanyaan' + this.counter)
         // this.counter++
         this.$socket.emit('question-request', this.counter)
       }, 5000)
       setTimeout(() => {
         clearInterval(interval)
-      }, 25000);
+      }, 25000)
     }
     // intervalQuestion() {
     //   setInterval(this.timer, 2000)
@@ -90,7 +90,7 @@ export default {
     // stopInterval() {
     //   clearInterval(this.intervalQuestion)
     // }
-  },
+  }
 }
 </script>
 
@@ -112,13 +112,13 @@ export default {
   color: #0c5e73;
   display: flex;
   align-items: center;
-  height: 6rem;
+  min-height: 6rem;
   box-shadow: 2px 1px 3px 2px #0c5e73;
 }
 
 .question {
   font-family: 'Roboto', sans-serif;
-  font-size: 2.8rem;
+  font-size: 2.5rem;
   font-weight: 700;
   margin: 0 auto;
 }
@@ -130,7 +130,7 @@ export default {
   height: 45vh;
 }
 
-.skip {
+/* .skip {
   background-color: #CC575E;
   border-radius: 0.8rem;
   padding: 0.5rem 1.5rem;
@@ -145,15 +145,16 @@ export default {
   color: #fff;
   font-size: 3rem;
   font-weight: 700;
-}
+} */
 
 .total {
   border-radius: 0.8rem;
   padding: 0.5rem 1.5rem;
   position: absolute;
-  left: 8vw;
+  left: 4vw;
   top: 9vh;
   cursor: default;
+  color: #18A58F;
 }
 
 .total-title {
@@ -248,6 +249,6 @@ export default {
   align-self: center;
   font-family: 'Roboto', sans-serif;
   font-size: 2rem;
-
+  cursor: pointer;
 }
 </style>
