@@ -2,14 +2,15 @@
   <section class="wrapper">
     <!-- NAVBAR -->
     <nav class="navbar">
-      <label class="question">Siapakah penemu kereta api?</label>
+      <Question :question="question.question" />
     </nav>
 
     <!-- IMAGE SECTION -->
     <div class="content">
-      <div class="box-question">
+      <ImageQuestion :imageSrc="question.image_url" />
+      <!-- <div class="box-question">
         <img class="img-question" src="https://ferdfound.files.wordpress.com/2014/12/george-stephenson-_663_382.png" alt="">
-      </div>
+      </div> -->
 
       <div class="skip">
         <h3 class="skip-text">SKIP</h3>
@@ -24,18 +25,21 @@
     <!-- ANSWER SECTION -->
     <div class="selection">
       <div class="ans-box">
-        <div class="answer-1"><label class="question-name">George Stephenson</label></div>
-        <div class="answer-2"><label class="question-name">George Washington</label></div>
+        <OptionDiv :classList="'answer-1'" :optionName="question.choice1" @setOption="setOption" />
+        <OptionDiv :classList="'answer-2'" :optionName="question.choice2" @setOption="setOption" />
       </div>
       <div class="ans-box">
-        <div class="answer-3"><label class="question-name">James Watt</label></div>
-        <div class="answer-4"><label class="question-name">James Clear</label></div>
+        <OptionDiv :classList="'answer-3'" :optionName="question.choice3" @setOption="setOption" />
+        <OptionDiv :classList="'answer-4'" :optionName="question.choice4" @setOption="setOption" />
       </div>
     </div>
   </section>
 </template>
 
 <script>
+import OptionDiv from '@/components/OptionDiv'
+import Question from '@/components/Question'
+import ImageQuestion from '@/components/ImageQuestion'
 
 export default {
   name: 'Home',
@@ -48,6 +52,11 @@ export default {
     }
   },
   components: {
+    OptionDiv,
+    Question,
+    ImageQuestion
+  },
+  computed: {
   },
   sockets: {
     'user-connected' (users) {
@@ -56,41 +65,24 @@ export default {
     'question-send' (question) {
       this.question = question
       this.counter++
-      // if (this.counter === 3) {
-      //   console.log('Masuk set interval')
-      //   clearInterval(this.question)
-      // } else {
-      //   this.question = question
-      //   this.counter++
-      // }
     }
   },
   created() {
-    // this.intervalQuestion()
     this.pollData()
   },
   methods: {
+    setOption(answer) {
+      alert(answer)
+    },
     pollData() {
       let interval = setInterval(() => {
-        // console.log('pertanyaan' + this.counter)
-        // this.counter++
         this.$socket.emit('question-request', this.counter)
       }, 5000)
       setTimeout(() => {
         clearInterval(interval)
       }, 25000);
     }
-    // intervalQuestion() {
-    //   setInterval(this.timer, 2000)
-    // },
-    // timer() {
-    //   // console.log(`ini pertanyaan ke ${this.counter++}`)
-    //   this.$socket.emit('question-request', this.counter)
-    // },
-    // stopInterval() {
-    //   clearInterval(this.intervalQuestion)
-    // }
-  },
+  }
 }
 </script>
 
@@ -112,15 +104,8 @@ export default {
   color: #0c5e73;
   display: flex;
   align-items: center;
-  height: 6rem;
+  height: 15%;
   box-shadow: 2px 1px 3px 2px #0c5e73;
-}
-
-.question {
-  font-family: 'Roboto', sans-serif;
-  font-size: 2.8rem;
-  font-weight: 700;
-  margin: 0 auto;
 }
 
 .content {
@@ -170,14 +155,6 @@ export default {
   font-weight: 900;
 }
 
-.img-question {
-  margin-top: 1rem;
-  border-radius: 0.5rem;
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-
 .box-question {
   margin: 0 auto;
   height: 40vh;
@@ -188,66 +165,5 @@ export default {
   display: flex;
   height: 22vh;
   justify-content: space-around;
-}
-
-.answer-1 {
-  color: #fff;
-  background-color:#DF222D;
-  font-weight: 700;
-  display: flex;
-  justify-content: center;
-  height: 12vh;
-  width: 30vw;
-  border-radius: 0.6rem;
-  margin-bottom: 0.6rem;
-  text-align: center;
-  cursor: pointer;
-}
-.answer-2 {
-  color: #fff;
-  background-color: #1DA1E3;
-  font-weight: 700;
-  display: flex;
-  justify-content: center;
-  height: 12vh;
-  width: 30vw;
-  border-radius: 0.6rem;
-  margin-bottom: 0.6rem;
-  text-align: center;
-  cursor: pointer;
-}
-.answer-3 {
-  color: #fff;
-  background-color: #D69C23;
-  font-weight: 700;
-  display: flex;
-  justify-content: center;
-  height: 12vh;
-  width: 30vw;
-  border-radius: 0.6rem;
-  margin-bottom: 0.6rem;
-  text-align: center;
-  cursor: pointer;
-}
-.answer-4 {
-  color: #fff;
-  background-color: #21CF71;
-  font-weight: 700;
-  display: flex;
-  justify-content: center;
-  height: 12vh;
-  width: 30vw;
-  border-radius: 0.6rem;
-  margin-bottom: 0.6rem;
-  text-align: center;
-  cursor: pointer;
-}
-
-.question-name {
-  display: flex;
-  align-self: center;
-  font-family: 'Roboto', sans-serif;
-  font-size: 2rem;
-
 }
 </style>
