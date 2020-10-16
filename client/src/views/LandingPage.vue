@@ -29,17 +29,6 @@ export default {
       // users: []
     }
   },
-  // sockets: {
-  //   'user-connected' (users) {
-  //     console.log(users, '<<<<< users dari server')
-  //     this.users = users
-  //     if (this.users.length < 2) {
-  //       this.$router.push({name: 'Waiting'})
-  //     } else {
-  //       this.$router.push({name: 'GamePlay'})
-  //     }
-  //   }
-  // },
   computed: {
     users() {
       return this.$store.state.users
