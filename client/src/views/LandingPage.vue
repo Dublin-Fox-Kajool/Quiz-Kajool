@@ -1,9 +1,10 @@
 <template>
   <section class="login-container">
     <div class="custom-login">
+      <h1 class="game-title">Welcome to Kajool</h1>
       <img src="../assets/login-logo.svg" alt="">
       <div class="login-title-box">
-        <h1 class="login-title-font">Enter your name</h1>
+        <h2 class="login-title-font">Enter your name</h2>
       </div>
       <form @submit.prevent="play" class="custom-form">
         <div class="form-group-custom">
@@ -50,6 +51,12 @@ export default {
   height: 100vh;
   margin: 0 auto;
 
+}
+.game-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #60baff;
 }
 
 .login-title-box {
