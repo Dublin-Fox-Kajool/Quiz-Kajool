@@ -2,14 +2,15 @@
   <section class="wrapper">
     <!-- NAVBAR -->
     <nav class="navbar">
-      <label class="question">Siapakah penemu kereta api? Lorem ipsum dolor sit amet consectetur adipisicing elit.</label>
+      <Question :question="question.question" />
     </nav>
 
     <!-- IMAGE SECTION -->
     <div class="content">
-      <div class="box-question">
+      <ImageQuestion :imageSrc="question.image_url" />
+      <!-- <div class="box-question">
         <img class="img-question" src="https://ferdfound.files.wordpress.com/2014/12/george-stephenson-_663_382.png" alt="">
-      </div>
+      </div> -->
 
       <!-- <div class="skip">
         <h3 class="skip-text">SKIP</h3>
@@ -24,18 +25,21 @@
     <!-- ANSWER SECTION -->
     <div class="selection">
       <div class="ans-box">
-        <div class="answer-1"><label class="question-name">George Stephenson</label></div>
-        <div class="answer-2"><label class="question-name">George Washington</label></div>
+        <OptionDiv :classList="'answer-1'" :optionName="question.choice1" @setOption="setOption" />
+        <OptionDiv :classList="'answer-2'" :optionName="question.choice2" @setOption="setOption" />
       </div>
       <div class="ans-box">
-        <div class="answer-3"><label class="question-name">James Watt</label></div>
-        <div class="answer-4"><label class="question-name">James Clear</label></div>
+        <OptionDiv :classList="'answer-3'" :optionName="question.choice3" @setOption="setOption" />
+        <OptionDiv :classList="'answer-4'" :optionName="question.choice4" @setOption="setOption" />
       </div>
     </div>
   </section>
 </template>
 
 <script>
+import OptionDiv from '@/components/OptionDiv'
+import Question from '@/components/Question'
+import ImageQuestion from '@/components/ImageQuestion'
 
 export default {
   name: 'Home',
@@ -48,6 +52,11 @@ export default {
     }
   },
   components: {
+    OptionDiv,
+    Question,
+    ImageQuestion
+  },
+  computed: {
   },
   sockets: {
     'user-connected' (users) {
@@ -56,40 +65,23 @@ export default {
     'question-send' (question) {
       this.question = question
       this.counter++
-      // if (this.counter === 3) {
-      //   console.log('Masuk set interval')
-      //   clearInterval(this.question)
-      // } else {
-      //   this.question = question
-      //   this.counter++
-      // }
     }
   },
-  created () {
-    // this.intervalQuestion()
+  created() {
     this.pollData()
   },
   methods: {
-    pollData () {
-      const interval = setInterval(() => {
-        // console.log('pertanyaan' + this.counter)
-        // this.counter++
+    setOption(answer) {
+      alert(answer)
+    },
+    pollData() {
+      let interval = setInterval(() => {
         this.$socket.emit('question-request', this.counter)
       }, 5000)
       setTimeout(() => {
         clearInterval(interval)
       }, 25000)
     }
-    // intervalQuestion() {
-    //   setInterval(this.timer, 2000)
-    // },
-    // timer() {
-    //   // console.log(`ini pertanyaan ke ${this.counter++}`)
-    //   this.$socket.emit('question-request', this.counter)
-    // },
-    // stopInterval() {
-    //   clearInterval(this.intervalQuestion)
-    // }
   }
 }
 </script>
@@ -171,18 +163,10 @@ export default {
   font-weight: 900;
 }
 
-.img-question {
-  margin-top: 1rem;
-  border-radius: 0.5rem;
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-
 .box-question {
   margin: 0 auto;
-  height: 40vh;
-  width: 500px;
+  height: 43vh;
+  width: 550px;
 }
 
 .selection {
@@ -198,7 +182,7 @@ export default {
   display: flex;
   justify-content: center;
   height: 12vh;
-  width: 30vw;
+  width: 35vw;
   border-radius: 0.6rem;
   margin-bottom: 0.6rem;
   text-align: center;
@@ -211,7 +195,7 @@ export default {
   display: flex;
   justify-content: center;
   height: 12vh;
-  width: 30vw;
+  width: 35vw;
   border-radius: 0.6rem;
   margin-bottom: 0.6rem;
   text-align: center;
@@ -224,7 +208,7 @@ export default {
   display: flex;
   justify-content: center;
   height: 12vh;
-  width: 30vw;
+  width: 35vw;
   border-radius: 0.6rem;
   margin-bottom: 0.6rem;
   text-align: center;
@@ -237,7 +221,7 @@ export default {
   display: flex;
   justify-content: center;
   height: 12vh;
-  width: 30vw;
+  width: 35vw;
   border-radius: 0.6rem;
   margin-bottom: 0.6rem;
   text-align: center;
