@@ -16,7 +16,7 @@ io.on('connection', (socket) => {
       users.push(user.name)
       console.log(users)
 
-      io.emit('user-connected', users)
+      io.emit('USER_CONNECTED', users)
     })
     
     socket.on('question-request', async (counter) => {

@@ -9,14 +9,14 @@
     <div class="content">
       <ImageQuestion :imageSrc="question.image_url" />
 
-      <div class="skip">
+      <!-- <div class="skip">
         <h3 class="skip-text">SKIP</h3>
-      </div>
+      </div> -->
 
-      <div class="total">
+      <!-- <div class="total">
         <h1 class="total-title">0</h1>
         <h3 class="total-text">Answers</h3>
-      </div>
+      </div> -->
     </div>
 
     <!-- ANSWER SECTION -->
@@ -71,10 +71,10 @@ export default {
       this.$socket.emit('question-request', this.counter)
       let interval = setInterval(() => {
         this.$socket.emit('question-request', this.counter)
-      }, 5000)
+      }, 10000)
       setTimeout(() => {
         clearInterval(interval)
-      }, 25000);
+      }, 50000);
     }
   }
 }

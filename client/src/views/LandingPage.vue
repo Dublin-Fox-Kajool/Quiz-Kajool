@@ -26,18 +26,23 @@ export default {
   data () {
     return {
       name: '',
-      users: []
+      // users: []
     }
   },
-  sockets: {
-    'user-connected' (users) {
-      console.log(users, '<<<<< users dari server')
-      this.users = users
-      if (this.users.length < 2 && localStorage.name) {
-        // this.$router.push({name: 'Waiting'})
-      } else {
-        this.$router.push({name: 'GamePlay'})
-      }
+  // sockets: {
+  //   'user-connected' (users) {
+  //     console.log(users, '<<<<< users dari server')
+  //     this.users = users
+  //     if (this.users.length < 2) {
+  //       this.$router.push({name: 'Waiting'})
+  //     } else {
+  //       this.$router.push({name: 'GamePlay'})
+  //     }
+  //   }
+  // },
+  computed: {
+    users() {
+      return this.$store.state.users
     }
   },
   methods: {
@@ -47,6 +52,12 @@ export default {
       }
       this.$socket.emit('user-connect', payload)
       localStorage.setItem('name', this.name)
+        console.log(this.users, '<<<< NI USERS')
+      if (this.users.length < 2) {
+        this.$router.push({name: 'Waiting'})
+      } else {
+        this.$router.push({name: 'Home'})
+      }
     }
   }
 }

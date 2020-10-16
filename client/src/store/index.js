@@ -15,7 +15,7 @@ export default new Vuex.Store({
     'SOCKET_USER_CONNECTED' (state, payload) {
       console.log(payload, '<<<<< users dari server')
       state.users = payload
-    }
+    },
   },
   actions: {
   },
