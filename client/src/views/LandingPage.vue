@@ -21,7 +21,23 @@
 </template>
 <script>
 export default {
-  name: 'LandingPage'
+  name: 'LandingPage',
+  data () {
+    return {
+      name: ''
+    }
+  },
+  methods: {
+    play () {
+      let payload = {
+        name: this.name
+      }
+      this.$socket.emit('user-connect', payload)
+      this.$socket.emit('question-request', 0)
+      localStorage.setItem('name', this.name)
+      this.$router.push({name: 'Home'})
+    }
+  },
 }
 </script>
 
@@ -33,7 +49,7 @@ export default {
   width: 500px;
   height: 100vh;
   margin: 0 auto;
-  
+
 }
 
 .login-title-box {

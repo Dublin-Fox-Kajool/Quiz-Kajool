@@ -8,7 +8,7 @@
     <!-- IMAGE SECTION -->
     <div class="content">
       <div class="box-question">
-        <img src="https://ferdfound.files.wordpress.com/2014/12/george-stephenson-_663_382.png" alt="">
+        <img class="img-question" src="https://ferdfound.files.wordpress.com/2014/12/george-stephenson-_663_382.png" alt="">
       </div>
 
       <div class="skip">
@@ -39,8 +39,27 @@
 
 export default {
   name: 'Home',
+  data() {
+    return {
+      users: [],
+      question: null,
+      counter: 0
+    }
+  },
   components: {
-  }
+  },
+  sockets: {
+    'user-connected' (users) {
+      this.users = users
+    },
+    'question-send' (question) {
+      this.question = question
+      this.counter++
+    }
+  },
+  computed: {
+    setInterval()
+  },
 }
 </script>
 
@@ -120,9 +139,7 @@ export default {
   font-weight: 900;
 }
 
-
-
-img {
+.img-question {
   margin-top: 1rem;
   border-radius: 0.5rem;
   height: 100%;
