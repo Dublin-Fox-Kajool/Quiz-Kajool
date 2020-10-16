@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import LandingPage from '../views/LandingPage.vue'
 import WinnerPage from '../views/WinnerPage.vue'
+import GamePlay from '../components/GamePlay.vue'
+import Waiting from '../components/Waiting.vue'
 
 Vue.use(VueRouter)
 
@@ -21,6 +23,16 @@ const routes = [
     path: '/winner',
     name: 'WinnerPage',
     component: WinnerPage
+  },
+  {
+    path: '/gameplay',
+    name: 'GamePlay',
+    component: GamePlay
+  },
+  {
+    path: '/waiting',
+    name: 'Waiting',
+    component: Waiting
   }
 ]
 

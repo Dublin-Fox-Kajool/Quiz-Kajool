@@ -1,7 +1,6 @@
 <template>
   <section class="wrapper">
-    <GamePlay v-if="isStart == true"></GamePlay>
-    <h1 v-else>Waiting another player</h1>
+    <Gameplay></Gameplay>
   </section>
 </template>
 
@@ -19,7 +18,19 @@ export default {
   },
   computed: {
     isStart() {
-      return this.users.length >= 2
+      
+    }
+  },
+  created() {
+    if (this.users < 2) {
+      this.$router.push({name: 'Waiting'})
+    } else {
+    }
+  },
+  sockets: {
+    'user-connected' (users) {
+      console.log(users, '<<<<< users dari server')
+      this.users = users
     }
   },
   methods: {

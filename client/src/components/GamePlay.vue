@@ -68,6 +68,7 @@ export default {
       alert(answer)
     },
     pollData() {
+      this.$socket.emit('question-request', this.counter)
       let interval = setInterval(() => {
         this.$socket.emit('question-request', this.counter)
       }, 5000)
@@ -91,8 +92,15 @@ export default {
   color: #0c5e73;
   display: flex;
   align-items: center;
-  height: 15%;
+  min-height: 6rem;
   box-shadow: 2px 1px 3px 2px #0c5e73;
+}
+
+.question {
+  font-family: 'Roboto', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 auto;
 }
 
 .content {
@@ -102,7 +110,7 @@ export default {
   height: 45vh;
 }
 
-.skip {
+/* .skip {
   background-color: #CC575E;
   border-radius: 0.8rem;
   padding: 0.5rem 1.5rem;
@@ -117,15 +125,16 @@ export default {
   color: #fff;
   font-size: 3rem;
   font-weight: 700;
-}
+} */
 
 .total {
   border-radius: 0.8rem;
   padding: 0.5rem 1.5rem;
   position: absolute;
-  left: 8vw;
+  left: 4vw;
   top: 9vh;
   cursor: default;
+  color: #18A58F;
 }
 
 .total-title {
@@ -144,13 +153,74 @@ export default {
 
 .box-question {
   margin: 0 auto;
-  height: 40vh;
-  width: 500px;
+  height: 43vh;
+  width: 550px;
 }
 
 .selection {
   display: flex;
   height: 22vh;
   justify-content: space-around;
+}
+
+.answer-1 {
+  color: #fff;
+  background-color:#DF222D;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  height: 12vh;
+  width: 35vw;
+  border-radius: 0.6rem;
+  margin-bottom: 0.6rem;
+  text-align: center;
+  cursor: pointer;
+}
+.answer-2 {
+  color: #fff;
+  background-color: #1DA1E3;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  height: 12vh;
+  width: 35vw;
+  border-radius: 0.6rem;
+  margin-bottom: 0.6rem;
+  text-align: center;
+  cursor: pointer;
+}
+.answer-3 {
+  color: #fff;
+  background-color: #D69C23;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  height: 12vh;
+  width: 35vw;
+  border-radius: 0.6rem;
+  margin-bottom: 0.6rem;
+  text-align: center;
+  cursor: pointer;
+}
+.answer-4 {
+  color: #fff;
+  background-color: #21CF71;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  height: 12vh;
+  width: 35vw;
+  border-radius: 0.6rem;
+  margin-bottom: 0.6rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.question-name {
+  display: flex;
+  align-self: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 2rem;
+  cursor: pointer;
 }
 </style>
