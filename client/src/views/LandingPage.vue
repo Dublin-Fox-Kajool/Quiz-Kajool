@@ -21,7 +21,23 @@
 </template>
 <script>
 export default {
-  name: 'LandingPage'
+  name: 'LandingPage',
+  data () {
+    return {
+      name: ''
+    }
+  },
+  methods: {
+    play () {
+      let payload = {
+        name: this.name
+      }
+      this.$socket.emit('user-connect', payload)
+      this.$socket.emit('question-request', 0)
+      localStorage.setItem('name', this.name)
+      this.$router.push({name: 'Home'})
+    }
+  },
 }
 </script>
 

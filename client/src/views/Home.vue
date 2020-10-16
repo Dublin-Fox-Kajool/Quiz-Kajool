@@ -39,8 +39,27 @@
 
 export default {
   name: 'Home',
+  data() {
+    return {
+      users: [],
+      question: null,
+      counter: 0
+    }
+  },
   components: {
-  }
+  },
+  sockets: {
+    'user-connected' (users) {
+      this.users = users
+    },
+    'question-send' (question) {
+      this.question = question
+      this.counter++
+    }
+  },
+  computed: {
+    setInterval()
+  },
 }
 </script>
 
