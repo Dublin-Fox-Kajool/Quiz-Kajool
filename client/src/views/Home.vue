@@ -43,7 +43,8 @@ export default {
     return {
       users: [],
       question: null,
-      counter: 0
+      counter: 0,
+      saveInterval: null
     }
   },
   components: {
@@ -55,10 +56,40 @@ export default {
     'question-send' (question) {
       this.question = question
       this.counter++
+      // if (this.counter === 3) {
+      //   console.log('Masuk set interval')
+      //   clearInterval(this.question)
+      // } else {
+      //   this.question = question
+      //   this.counter++
+      // }
     }
   },
-  computed: {
-    setInterval()
+  created() {
+    // this.intervalQuestion()
+    this.pollData()
+  },
+  methods: {
+    pollData() {
+      let interval = setInterval(() => {
+        // console.log('pertanyaan' + this.counter)
+        // this.counter++
+        this.$socket.emit('question-request', this.counter)
+      }, 5000)
+      setTimeout(() => {
+        clearInterval(interval)
+      }, 25000);
+    }
+    // intervalQuestion() {
+    //   setInterval(this.timer, 2000)
+    // },
+    // timer() {
+    //   // console.log(`ini pertanyaan ke ${this.counter++}`)
+    //   this.$socket.emit('question-request', this.counter)
+    // },
+    // stopInterval() {
+    //   clearInterval(this.intervalQuestion)
+    // }
   },
 }
 </script>
